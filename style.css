@@ -1,34 +1,98 @@
-* {
-	box-sizing: border-box;
+/* Reset base */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fffdf5; /* Uno sfondo "crema" caldissimo */
+    overflow: hidden;
 }
 
-body {
-	margin: 0;
-	min-height: 100vh;
-	display: grid;
-	place-items: center;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	background: linear-gradient(135deg, #f7f8fb, #e9edf5);
-	color: #1b1f2a;
+.hero-tramonto {
+    position: relative;
+    height: 100vh; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.maintenance {
-	width: min(90%, 600px);
-	padding: 2rem;
-	text-align: center;
-	background: #ffffff;
-	border: 1px solid #dbe2ef;
-	border-radius: 14px;
-	box-shadow: 0 14px 32px rgba(17, 24, 39, 0.08);
+/* Effetto a macchie solari con più giallo */
+.overlay-colorato {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    
+    /* Mix di Giallo, Oro, Bianco e un tocco di Celeste */
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 230, 100, 0.6) 0%, transparent 65%), /* Giallo acceso */
+        radial-gradient(circle at 45% 45%, rgba(255, 215, 0, 0.5) 0%, transparent 75%),   /* Oro centrale */
+        radial-gradient(circle at 80% 25%, rgba(135, 206, 235, 0.5) 0%, transparent 60%), /* Celeste */
+        radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.7) 0%, transparent 60%), /* Bianco luminoso */
+        radial-gradient(circle at 20% 80%, rgba(255, 190, 50, 0.5) 0%, transparent 70%),  /* Giallo miele */
+        radial-gradient(circle at 85% 85%, rgba(173, 216, 230, 0.4) 0%, transparent 60%); /* Celeste riflesso */
+    
+    filter: blur(45px); 
+    opacity: 1;
 }
 
-h1 {
-	margin: 0;
-	font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+.contenuto-hero {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    /* Un grigio antracite molto profondo per un look premium */
+    color: #1f2937; 
+    font-family: 'Georgia', serif;
 }
 
-p {
-	margin: 0.75rem 0 0;
-	font-size: 1rem;
-	color: #4a5468;
+/* Animazione del Titolo */
+.titolo-animato {
+    font-size: 4.8rem; /* Leggermente più grande */
+    margin: 0;
+    opacity: 0;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transform: translateY(30px);
+    animation: entrataTesto 2s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+/* Animazione del Sottotitolo */
+.sottotitolo-animato {
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(31, 41, 55, 0.75);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: entrataTesto 2s ease-out forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes entrataTesto {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Regole per schermi piccoli (Smartphone e Tablet) */
+@media (max-width: 768px) {
+    
+    .titolo-animato {
+        font-size: 2.8rem; /* Rimpiccioliamo il titolo per non farlo andare a capo male */
+        padding: 0 20px;   /* Aggiungiamo un po' di spazio ai lati */
+    }
+
+    .sottotitolo-animato {
+        font-size: 0.9rem;  /* Testo più leggibile su mobile */
+        letter-spacing: 3px; /* Riduciamo lo spazio tra lettere per farlo stare in una riga */
+    }
+
+    .hero-tramonto {
+        height: 100vh; /* Ci assicuriamo che copra sempre tutto lo schermo del telefono */
+    }
 }
