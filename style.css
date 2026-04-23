@@ -1,10 +1,9 @@
-/* Reset base */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    background-color: #fffdf5; /* Uno sfondo "crema" caldissimo */
+    background-color: #f0f8ff; 
     overflow: hidden;
 }
 
@@ -17,7 +16,6 @@ body, html {
     align-items: center;
 }
 
-/* Effetto a macchie solari con più giallo */
 .overlay-colorato {
     position: absolute;
     top: 0;
@@ -25,17 +23,20 @@ body, html {
     width: 100%;
     height: 100%;
     z-index: 1;
-    
-    /* Mix di Giallo, Oro, Bianco e un tocco di Celeste */
     background-image: 
-        radial-gradient(circle at 15% 20%, rgba(255, 230, 100, 0.6) 0%, transparent 65%), /* Giallo acceso */
-        radial-gradient(circle at 45% 45%, rgba(255, 215, 0, 0.5) 0%, transparent 75%),   /* Oro centrale */
-        radial-gradient(circle at 80% 25%, rgba(135, 206, 235, 0.5) 0%, transparent 60%), /* Celeste */
-        radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.7) 0%, transparent 60%), /* Bianco luminoso */
-        radial-gradient(circle at 20% 80%, rgba(255, 190, 50, 0.5) 0%, transparent 70%),  /* Giallo miele */
-        radial-gradient(circle at 85% 85%, rgba(173, 216, 230, 0.4) 0%, transparent 60%); /* Celeste riflesso */
+        /* CALDI: Spostati in basso a sinistra (10%-40% width, 60%-90% height) */
+        radial-gradient(circle at 10% 90%, rgba(255, 215, 0, 0.5) 0%, transparent 60%), 
+        radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.4) 0%, transparent 70%),   
+        radial-gradient(circle at 40% 70%, rgba(255, 20, 147, 0.5) 0%, transparent 80%), 
+        
+        /* LUCE: Sempre centrale */
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7) 0%, transparent 60%), 
+        
+        /* FREDDI: Spostati in alto a destra (75%-90% width, 10%-25% height) */
+        radial-gradient(circle at 90% 10%, rgba(173, 216, 230, 0.5) 0%, transparent 70%),  
+        radial-gradient(circle at 75% 15%, rgba(135, 206, 235, 0.4) 0%, transparent 60%); 
     
-    filter: blur(45px); 
+    filter: blur(50px); 
     opacity: 1;
 }
 
@@ -43,14 +44,12 @@ body, html {
     position: relative;
     z-index: 2;
     text-align: center;
-    /* Un grigio antracite molto profondo per un look premium */
     color: #1f2937; 
     font-family: 'Georgia', serif;
 }
 
-/* Animazione del Titolo */
 .titolo-animato {
-    font-size: 4.8rem; /* Leggermente più grande */
+    font-size: 4.8rem; 
     margin: 0;
     opacity: 0;
     letter-spacing: 1px;
@@ -60,7 +59,6 @@ body, html {
     animation-delay: 0.4s;
 }
 
-/* Animazione del Sottotitolo */
 .sottotitolo-animato {
     font-size: 1.2rem;
     letter-spacing: 6px;
@@ -79,20 +77,13 @@ body, html {
     }
 }
 
-/* Regole per schermi piccoli (Smartphone e Tablet) */
 @media (max-width: 768px) {
-    
     .titolo-animato {
-        font-size: 2.8rem; /* Rimpiccioliamo il titolo per non farlo andare a capo male */
-        padding: 0 20px;   /* Aggiungiamo un po' di spazio ai lati */
+        font-size: 2.8rem;
+        padding: 0 20px;
     }
-
     .sottotitolo-animato {
-        font-size: 0.9rem;  /* Testo più leggibile su mobile */
-        letter-spacing: 3px; /* Riduciamo lo spazio tra lettere per farlo stare in una riga */
-    }
-
-    .hero-tramonto {
-        height: 100vh; /* Ci assicuriamo che copra sempre tutto lo schermo del telefono */
+        font-size: 0.9rem;
+        letter-spacing: 3px;
     }
 }
