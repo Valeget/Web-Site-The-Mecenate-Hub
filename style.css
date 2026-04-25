@@ -4,7 +4,7 @@ body, html {
     height: 100%;
     width: 100%;
     background-color: #f0f8ff; 
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .hero-tramonto {
@@ -13,8 +13,11 @@ body, html {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    /* Cambiato da center a flex-end per spingere il testo in basso */
+    align-items: flex-end; 
+    /* Aumentiamo il padding basso per non toccare il bordo */
     padding-left: 10%;
+    padding-bottom: 10vh;
 }
 
 .overlay-colorato {
@@ -22,7 +25,8 @@ body, html {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    /* Estendiamo l'altezza oltre il 100% per creare continuità */
+    height: 120vh; 
     z-index: 1;
     background-image: 
         radial-gradient(circle at 10% 90%, rgba(255, 215, 0, 0.5) 0%, transparent 60%), 
@@ -31,16 +35,21 @@ body, html {
         radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7) 0%, transparent 60%), 
         radial-gradient(circle at 90% 10%, rgba(173, 216, 230, 0.5) 0%, transparent 70%),  
         radial-gradient(circle at 75% 15%, rgba(135, 206, 235, 0.4) 0%, transparent 60%); 
-    filter: blur(50px); 
+    filter: blur(60px); 
     opacity: 1;
+    /* Crea una sfumatura che va verso il colore della sezione successiva */
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 .contenuto-hero {
     position: relative;
     z-index: 2;
     text-align: left;
-    color: #4A154B;
+    color: #2c3e50; 
     font-family: 'Georgia', serif;
+    /* Assicuriamoci che il testo non sia troppo largo */
+    max-width: 800px;
 }
 
 .titolo-animato {
