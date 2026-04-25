@@ -15,13 +15,17 @@ body {
 /* Animated background with artistic gradients */
 .hero-bg {
 	position: fixed;
+
+    /*indicano che il livello deve coprire l'intera area della finestra del browser e rimanere "bloccato" lì, in modo che non si sposti quando l'utente scorre la pagina verso il basso.*/
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: radial-gradient(
+
+    /*Crea uno sfondo composto da più "strati" sovrapposti per ottenere un effetto artistico*/
+	background: radial-gradient( /*sfumature circolari per creare delle "macchie" di colore*/
 			circle at 15% 30%,
-			rgba(255, 71, 87, 0.3) 0%,
+			rgba(255, 71, 87, 0.3) 0%, /*gestisce la trasparenza del colore*/
 			transparent 50%
 		),
 		radial-gradient(
@@ -39,12 +43,12 @@ body {
 			rgba(46, 213, 115, 0.3) 0%,
 			transparent 50%
 		),
-		linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d1b4e 100%);
-	z-index: -2;
-	animation: backgroundShift 20s ease-in-out infinite;
+		linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d1b4e 100%);/*sfumatura lineare) che fa da colore di base per l'intero sfondo*/
+	z-index: -2;/*posiziona lo sfondo dietro a tutti gli altri elementi della pagina*/
+	animation: backgroundShift 20s ease-in-out infinite; /*applica un'animazione di 20 secondi, con un effetto di easing "ease-in-out" (i cerchi girano e si espandono) e che si ripete all'infinito*/
 }
 
-@keyframes backgroundShift {
+@keyframes backgroundShift { 
 	0%,
 	100% {
 		transform: scale(1) rotate(0deg);
@@ -54,7 +58,7 @@ body {
 	}
 }
 
-/* Floating creative elements */
+/* Floating creative elements, sono i cerchi che vanno in giro per l'intera pagina */
 .floating-elements {
 	position: fixed;
 	top: 0;
@@ -125,7 +129,7 @@ body {
 	padding: 20px;
 }
 
-/* Header with navigation */
+/* Barra di navigazione invisibile in alto*/
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -136,7 +140,7 @@ body {
 	animation: slideDown 1s ease-out 0.3s forwards;
 }
 
-.logo {
+.logo { /*DA TOGLIERE*/
 	font-size: 1.8rem;
 	font-weight: 900;
 	background: linear-gradient(135deg, #ff4757, #ff8c42, #6a5acd);
@@ -145,6 +149,7 @@ body {
 	background-clip: text;
 }
 
+/* Menu di navigazione in alto a destra */
 .nav {
 	display: flex;
 	gap: 30px;
@@ -163,7 +168,7 @@ body {
 	color: #ff4757;
 }
 
-.nav a::after {
+.nav a::after { /*crea una linea sottile arancione sotto ogni voce del menu che si espande quando l'utente ci passa sopra con il mouse*/
 	content: "";
 	position: absolute;
 	bottom: -5px;
@@ -197,10 +202,10 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	opacity: 0;
-	animation: fadeInUp 1s ease-out 0.8s forwards;
+	animation: fadeInUp 1s ease-out 0.8s forwards; /*applica un'animazione chiamata "fadeInUp" che dura 1 secondo, con un effetto di easing "ease-out" e che inizia dopo 0.8 secondi, facendo apparire il contenuto del hero in modo fluido e leggermente spostato verso l'alto*/
 }
 
-.hero-title {
+.hero-title { /*gestisce il titolo principale dell'hero*/
 	font-size: clamp(3rem, 8vw, 7rem);
 	font-weight: 900;
 	line-height: 0.9;
@@ -216,7 +221,7 @@ body {
 	display: block;
 }
 
-.title-sub {
+.title-sub { /*da togliere*/
 	background: linear-gradient(135deg, #ff8c42, #6a5acd);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -226,28 +231,28 @@ body {
 	font-weight: 600;
 }
 
-.hero-tagline {
+.hero-tagline { /*primo sottotitolo*/
 	font-size: clamp(1.2rem, 3vw, 1.8rem);
 	color: #bbb;
 	margin-bottom: 30px;
 	font-weight: 300;
 }
 
-.hero-description {
+.hero-description { /*paragrafo descrittivo*/
 	font-size: clamp(1rem, 2vw, 1.3rem);
 	color: #888;
 	max-width: 600px;
 	margin: 0 auto 40px;
 }
 
-.cta-buttons {
+.cta-buttons {/*contenitore per i pulsanti di call-to-action (CTA)*/
 	display: flex;
 	gap: 20px;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
-.btn {
+.btn { /*stile base per i pulsanti*/
 	padding: 15px 30px;
 	border: none;
 	border-radius: 25px;
@@ -261,18 +266,18 @@ body {
 	overflow: hidden;
 }
 
-.btn-primary {
+.btn-primary { /*primo bottone*/
 	background: linear-gradient(135deg, #ff4757, #ff8c42);
 	color: white;
 }
 
-.btn-secondary {
+.btn-secondary { /*secondo bottone*/
 	background: transparent;
 	color: #ff4757;
 	border: 2px solid #ff4757;
 }
 
-.btn:hover {
+.btn:hover { /*effetto al passaggio del mouse su entrambi i bottoni*/
 	transform: translateY(-3px);
 	box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
 }
@@ -289,12 +294,12 @@ body {
 }
 
 /* Portfolio masonry grid */
-.portfolio-section {
+.portfolio-section { /*sezione del portfolio, sotto feature projects*/
 	margin-top: 80px;
 	position: relative;
 }
 
-.section-title {
+.section-title { /*il titolo featured projects*/
 	text-align: center;
 	font-size: clamp(2rem, 5vw, 3rem);
 	font-weight: 800;
@@ -307,7 +312,7 @@ body {
 	animation: fadeInUp 1s ease-out 1.5s forwards;
 }
 
-.portfolio-grid {
+.portfolio-grid { /*la griglia con i singoli progetti*/
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	gap: 25px;
@@ -316,7 +321,7 @@ body {
 	padding: 0 20px;
 }
 
-.portfolio-item {
+.portfolio-item { /*stile per ogni elemento della griglia*/
 	position: relative;
 	background: rgba(255, 255, 255, 0.05);
 	border-radius: 35px;
@@ -405,7 +410,7 @@ body {
 	box-shadow: 0 25px 50px rgba(255, 71, 87, 0.2);
 }
 
-.portfolio-image {
+.portfolio-image { /*riquadro superiore degli elementi della griglia*/
 	width: 100%;
 	height: 250px;
 	background-size: cover;
@@ -414,11 +419,11 @@ body {
 	transition: all 0.6s ease;
 }
 
-.portfolio-item:nth-child(odd) .portfolio-image {
+.portfolio-item:nth-child(odd) .portfolio-image {/*aumenta l'altezza dei riquadri dispari(odd)*/
 	height: 350px;
 }
 
-.portfolio-overlay {
+.portfolio-overlay { /*il "velo" con il pulsante "View Project" */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -440,7 +445,7 @@ body {
 	opacity: 1;
 }
 
-.view-project {
+.view-project {/*la scritta "view project" che appare al passaggio del mouse su ogni elemento della griglia*/
 	color: white;
 	font-size: 1.2rem;
 	font-weight: 600;
@@ -453,18 +458,18 @@ body {
 	border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.portfolio-content {
+.portfolio-content { /*la parte inferiore di ogni elemento della griglia, con titolo, categoria e descrizione*/
 	padding: 25px;
 }
 
-.project-title {
+.project-title { /*titolo del progetto*/
 	font-size: 1.4rem;
 	font-weight: 700;
 	margin-bottom: 8px;
 	color: #fff;
 }
 
-.project-category {
+.project-category { /*categoria del progetto*/
 	color: #ff8c42;
 	font-size: 0.9rem;
 	font-weight: 500;
@@ -473,7 +478,7 @@ body {
 	margin-bottom: 12px;
 }
 
-.project-description {
+.project-description { /*descrizione del progetto*/
 	color: #aaa;
 	font-size: 0.95rem;
 	line-height: 1.5;
@@ -499,8 +504,8 @@ body {
 	background: linear-gradient(135deg, #a8edea, #fed6e3);
 }
 
-/* Stats section */
-.stats-section {
+/* Stats section in fondo alla pagina */
+.stats-section { /*il grande contenitore con effetto vetro*/
 	margin-top: 100px;
 	padding: 60px 20px;
 	text-align: center;
@@ -515,18 +520,18 @@ body {
 	animation: fadeInUp 1s ease-out 3.5s forwards;
 }
 
-.stats-grid {
+.stats-grid { /*la griglia con i numeri e le etichette delle statistiche*/
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	gap: 40px;
 	margin-top: 40px;
 }
 
-.stat-item {
+.stat-item { /*centra ogni singolo numero e la sua etichetta*/
 	text-align: center;
 }
 
-.stat-number {
+.stat-number { /*i numeri delle statistiche*/
 	font-size: 3rem;
 	font-weight: 900;
 	background: linear-gradient(135deg, #ff4757, #ff8c42);
@@ -537,11 +542,11 @@ body {
 	transition: all 0.3s ease;
 }
 
-.stat-number.counting {
+.stat-number.counting { /*applica un'animazione di ingrandimento ai numeri quando iniziano a contare*/
 	transform: scale(1.1);
 }
 
-.stat-label {
+.stat-label { /*le etichette sotto i numeri delle statistiche*/
 	color: #aaa;
 	font-size: 1rem;
 	text-transform: uppercase;
@@ -549,7 +554,7 @@ body {
 	margin-top: 5px;
 }
 
-/* Mobile optimizations */
+/* Mobile optimizations, DA CONTROLLARE SE POI TOLGO O AGGIUNGO QUALCHE ELEMENTO */
 @media (max-width: 768px) {
 	.hero-container {
 		padding: 15px;
