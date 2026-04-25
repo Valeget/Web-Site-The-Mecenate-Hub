@@ -23,7 +23,7 @@ function scrollToSection(sectionId) {
 	}
 }
 
-// Animated counter function
+// Animated counter function in fondo nella sezione delle statistiche
 function animateCounter(element, target, duration = 2000) {
 	const start = 0;
 	const increment = target / (duration / 16); // 60 FPS
@@ -66,7 +66,7 @@ function animateStats() {
 	});
 }
 
-// Project interaction handlers
+// Project interaction handlers  DA MODIFICARE
 function openProject(projectId) {
 	const projects = {
 		1: "Aurora Brand Identity - A comprehensive rebranding project that transformed a startup's visual presence",
@@ -78,7 +78,7 @@ function openProject(projectId) {
 	};
 
 	// Create modal effect
-	const modal = document.createElement("div");
+	const modal = document.createElement("div"); //crea l'effetto scuro dietro al contenuto del progetto
 	modal.style.cssText = `
                 position: fixed;
                 top: 0;
@@ -94,7 +94,7 @@ function openProject(projectId) {
                 transition: opacity 0.3s ease;
             `;
 
-	const content = document.createElement("div");
+	const content = document.createElement("div"); //crea il contenuto del progetto
 	content.style.cssText = `
                 background: rgba(255, 255, 255, 0.1);
                 backdrop-filter: blur(20px);
@@ -122,6 +122,7 @@ function openProject(projectId) {
 
 	modal.appendChild(content);
 	document.body.appendChild(modal);
+	document.body.style.overflow = "hidden";
 
 	// Trigger animation
 	setTimeout(() => (modal.style.opacity = "1"), 10);
@@ -130,9 +131,10 @@ function openProject(projectId) {
 	window.currentModal = modal;
 }
 
-function closeModal() {
+function closeModal() {  //come si chiudono i progetti
 	if (window.currentModal) {
 		window.currentModal.style.opacity = "0";
+		document.body.style.overflow = "";
 		setTimeout(() => {
 			document.body.removeChild(window.currentModal);
 			window.currentModal = null;
@@ -142,7 +144,7 @@ function closeModal() {
 
 function startProject() {
 	// Create contact form modal
-	const modal = document.createElement("div");
+	const modal = document.createElement("div"); //crea lo sfondo scuro del modulo
 	modal.style.cssText = `
                 position: fixed;
                 top: 0;
@@ -158,7 +160,7 @@ function startProject() {
                 transition: opacity 0.3s ease;
             `;
 
-	const form = document.createElement("div");
+	const form = document.createElement("div"); //crea il modulo di contatto
 	form.style.cssText = `
                 background: rgba(255, 255, 255, 0.1);
                 backdrop-filter: blur(20px);
@@ -172,23 +174,16 @@ function startProject() {
             `;
 
 	form.innerHTML = `
-                <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Let's Create Something Amazing</h3>
-                <p style="margin-bottom: 30px; color: #aaa;">Ready to start your next project? Get in touch!</p>
-                <div style="text-align: left; margin-bottom: 30px;">
-                    <input type="text" placeholder="Your Name" style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 15px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
-                    <input type="email" placeholder="Email Address" style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 15px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
-                    <textarea placeholder="Tell us about your project..." style="width: 100%; padding: 12px; height: 80px; border: none; border-radius: 15px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); resize: vertical;"></textarea>
+                <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Contact us!</h3>
+                <p style="margin-bottom: 30px; color: #aaa;">Mandaci una email o seguici su instagram per rimanere aggiornato sulle nostre iniziative!</p>
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <span style="display: block; color: #ff8c42; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Email:</span>
+                    <span style="display: block; font-size: 1.2rem; margin-bottom: 20px;">people@themecenatehub.it</span>
+                    
+                    <span style="display: block; color: #ff8c42; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Instagram:</span>
+                    <span style="display: block; font-size: 1.2rem; margin-bottom: 5px;">@themecenatehub</span>
                 </div>
                 <div style="display: flex; gap: 15px; justify-content: center;">
-                    <button onclick="submitForm()" style="
-                        background: linear-gradient(135deg, #ff4757, #ff8c42);
-                        border: none;
-                        color: white;
-                        padding: 12px 25px;
-                        border-radius: 20px;
-                        cursor: pointer;
-                        font-weight: 600;
-                    ">Send Message</button>
                     <button onclick="closeModal()" style="
                         background: transparent;
                         border: 2px solid #ff4757;
@@ -197,12 +192,13 @@ function startProject() {
                         border-radius: 20px;
                         cursor: pointer;
                         font-weight: 600;
-                    ">Cancel</button>
+                    ">Back</button>
                 </div>
             `;
 
 	modal.appendChild(form);
 	document.body.appendChild(modal);
+	document.body.style.overflow = "hidden";
 
 	setTimeout(() => (modal.style.opacity = "1"), 10);
 	window.currentModal = modal;

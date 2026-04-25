@@ -140,15 +140,6 @@ body {
 	animation: slideDown 1s ease-out 0.3s forwards;
 }
 
-.logo { /*DA TOGLIERE*/
-	font-size: 1.8rem;
-	font-weight: 900;
-	background: linear-gradient(135deg, #ff4757, #ff8c42, #6a5acd);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-}
-
 /* Menu di navigazione in alto a destra */
 .nav {
 	display: flex;
