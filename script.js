@@ -15,7 +15,7 @@ function scrollToSection(sectionId) {
 	if (section) {
 		section.scrollIntoView({
 			behavior: "smooth",
-			block: "start"
+			block: "center"
 		});
 	} else {
 		// If section doesn't exist, scroll to portfolio as fallback
@@ -23,54 +23,10 @@ function scrollToSection(sectionId) {
 	}
 }
 
-// Animated counter function in fondo nella sezione delle statistiche
-function animateCounter(element, target, duration = 2000) {
-	const start = 0;
-	const increment = target / (duration / 16); // 60 FPS
-	let current = start;
-
-	element.classList.add("counting");
-
-	const timer = setInterval(() => {
-		current += increment;
-
-		if (current >= target) {
-			current = target;
-			clearInterval(timer);
-			element.classList.remove("counting");
-
-			// Add suffix for specific stats
-			const label = element.nextElementSibling.textContent;
-			if (label.includes("Projects") || label.includes("Team")) {
-				element.textContent = Math.floor(current) + "+";
-			} else if (label.includes("Satisfaction")) {
-				element.textContent = Math.floor(current) + "%";
-			} else {
-				element.textContent = Math.floor(current);
-			}
-		} else {
-			element.textContent = Math.floor(current);
-		}
-	}, 16);
-}
-
-// Stats animation trigger
-function animateStats() {
-	const statNumbers = document.querySelectorAll(".stat-number");
-	statNumbers.forEach((stat, index) => {
-		const target = parseInt(stat.dataset.target);
-		// Stagger the animations
-		setTimeout(() => {
-			animateCounter(stat, target);
-		}, index * 200);
-	});
-}
-
 // Project interaction handlers  DA MODIFICARE
 function openProject(projectId) {
 	const projects = {
-		1: "Aurora Brand Identity - A comprehensive rebranding project that transformed a startup's visual presence",
-		2: "FinTech Mobile App - Revolutionary banking app with award-winning user experience",
+		1: "IL VIAGGIO",
 	};
 
 	// Create modal effect !VOGLIO CHE SIA UNA FINESTRA PIù GRANDE IN CUI POSSO METTERE IMMAGINI E TESTI
@@ -88,32 +44,95 @@ function openProject(projectId) {
                 z-index: 2000;
                 opacity: 0;
                 transition: opacity 0.3s ease;
+                will-change: opacity;
             `;
 
 	const content = document.createElement("div"); //crea il contenuto del progetto
+	content.classList.add("no-scrollbar");
 	content.style.cssText = `
                 background: rgba(255, 255, 255, 0.1);
                 backdrop-filter: blur(20px);
                 border-radius: 30px;
-                padding: 40px;
-                max-width: 500px;
-                text-align: center;
+                padding: clamp(20px, 5vw, 40px);
+                width: 95%;
+                max-width: 1400px;
+                min-height: 90vh;
+                max-height: 95vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+                text-align: left;
                 color: white;
                 border: 1px solid rgba(255, 255, 255, 0.2);
+                will-change: opacity, transform;
             `;
 
 	content.innerHTML = ` 
-                <h3 style="margin-bottom: 20px; font-size: 1.5rem;">${projects[projectId]}</h3>
-                <p style="margin-bottom: 30px; color: #aaa;">This would open the full project case study with detailed information, process, and results.</p>
-                <button onclick="closeModal()" style="
-                    background: linear-gradient(135deg, #ff4757, #ff8c42);
-                    border: none;
-                    color: white;
-                    padding: 12px 30px;
-                    border-radius: 20px;
-                    cursor: pointer;
-                    font-weight: 600;
-                ">Close</button>
+                <h3 style="margin-bottom: 20px; font-size: clamp(1.8rem, 5vw, 3rem); text-align: center; background: linear-gradient(135deg, #ff8c42, #6a5acd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">${projects[projectId]}</h3>
+                
+                <div style="text-align: center; color: #ccc; font-size: 1.1rem; line-height: 1.8;">
+                    <p>Un'opportunità unica per chi riconosce nel proprio lavoro il frutto di impegno e creatività.</p>
+                    <p>Nato con l'intento di ispirare e divertire i partecipanti, il viaggio si declina come un'esperienza personale e comunitaria:</p>
+                    
+                    <h4 style="margin-top: 40px; margin-bottom: 15px; text-align: left; color: #ff8c42; font-weight: 700; font-size: 1.4rem;">Il Tuo Percorso Individuale</h4>
+                    <p style="text-align: left;">Durante il viaggio visiteremo 3 città di particolare spicco culturale, con eventi e incontri esclusivi con figure affermate nel 
+                    proprio ambito. Un'atmosfera ricca di ispirazioni ti accompagnerà in ogni tappa.</p>
+                    
+                    <!-- 3 Rettangoli verticali -->
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px; margin-bottom: 40px; text-align: left;">
+                        <div style="flex: 1; min-width: 200px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; opacity: 0; animation: slideInLeft 0.8s ease-out 0.4s forwards;">
+                            <h5 style="color: #ff4757; font-size: 1.2rem; margin-bottom: 10px;">Spazi di Coworking Naturali</h5>
+                            <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">Soste in ambienti intimi e 
+                            naturali dove la bellezza dei paesaggi ti permetterà di concentrarti sulle tue opere come mai prima d'ora.</p>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; opacity: 0; animation: slideInBottom 0.8s ease-out 0.6s forwards;">
+                            <h5 style="color: #ff8c42; font-size: 1.2rem; margin-bottom: 10px;">Una Biblioteca Itinerante</h5>
+                            <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">Ci sposteremo in campero o in van. In ciascuno ci saranno a disposizione libri, saggi, disegni, scatti e strumenti da usare liberamente durante tutto il viaggio.</p>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; opacity: 0; animation: slideInRight 0.8s ease-out 0.8s forwards;">
+                            <h5 style="color: #6a5acd; font-size: 1.2rem; margin-bottom: 10px;">Incontri Esclusivi</h5>
+                            <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">Personalità di rilievo condivideranno con te la loro esperienza nelle città visitate.</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 100px; margin-bottom: 15px; text-align: left; color: #ff8c42; font-weight: 700; font-size: 1.4rem;">La Comunità</h4>
+                    <p style="text-align: left;">Ogni creativo a bordo proviene da un ramo dell'arte diverso. Scrittori, disegnatori, attori, musicisti — e di questi poeti, 
+                    pittori, scultori, sceneggiatori, teatranti, cinematografi, cantanti, strumentisti. Le sfumature sono infinite. 
+                    Tutti accomunati dalla fame di realizzare i propri sogni e trovare nuove ispirazioni.</p>
+
+                    <!-- 3 Rettangoli verticali -->
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px; margin-bottom: 40px; text-align: left;">
+                        <div style="flex: 1; min-width: 200px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; opacity: 0; animation: slideInLeft 0.8s ease-out 1.0s forwards;">
+                            <h5 style="color: #ffd166; font-size: 1.2rem; margin-bottom: 10px;">Workshop Pomeridiani</h5>
+                            <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">Ogni pomeriggio è dedicato a una singola persona che conduce un workshop sul proprio ambito, con piccoli laboratori per avvicinare gli altri alla propria realtà creativa.</p>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; opacity: 0; animation: slideInBottom 0.8s ease-out 1.2s forwards;">
+                            <h5 style="color: #2ed573; font-size: 1.2rem; margin-bottom: 10px;">Serate Insieme</h5>
+                            <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">Le serate sono pensate per conoscersi più a fondo e, soprattutto, per divertirsi. Un momento di condivisione autentica tra persone che vivono la creatività ogni giorno.</p>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; opacity: 0; animation: slideInRight 0.8s ease-out 1.4s forwards;">
+                            <h5 style="color: #9b59b6; font-size: 1.2rem; margin-bottom: 10px;">Diversità Creativa</h5>
+                            <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">Ciascun partecipante porta con sé un universo artistico unico. La contaminazione tra discipline diverse è il cuore pulsante dell'esperienza Mecenate Hub.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="text-align: center;">
+                    <button onclick="closeModal()" style="
+                        background: transparent;
+                        color: #ff4757;
+                        border: 2px solid #ff4757;
+                        padding: 15px 40px;
+                        border-radius: 25px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                    ">Close</button>
+                </div>
             `;
 
 	modal.appendChild(content);
@@ -121,7 +140,7 @@ function openProject(projectId) {
 	document.body.style.overflow = "hidden";
 
 	// Trigger animation
-	setTimeout(() => (modal.style.opacity = "1"), 10);
+	setTimeout(() => (modal.style.opacity = "1"), 50);
 
 	// Store modal reference
 	window.currentModal = modal;
@@ -136,68 +155,6 @@ function closeModal() {  //come si chiudono i progetti
 			window.currentModal = null;
 		}, 300);
 	}
-}
-
-function ContactSection() {
-	// Create contact form modal
-	const modal = document.createElement("div"); //crea lo sfondo scuro del modulo
-	modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 2000;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            `;
-
-	const form = document.createElement("div"); //crea il modulo di contatto
-	form.style.cssText = `
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(20px);
-                border-radius: 30px;
-                padding: 40px;
-                max-width: 400px;
-                width: 90%;
-                text-align: center;
-                color: white;
-                border: 1px solid rgba(255, 255, 255, 0.2);
-            `;
-
-	form.innerHTML = `
-                <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Contact us!</h3>
-                <p style="margin-bottom: 30px; color: #aaa;">Mandaci una email o seguici su instagram per rimanere aggiornato sulle nostre iniziative!</p>
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <span style="display: block; color: #ff8c42; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Email:</span>
-                    <span style="display: block; font-size: 1.2rem; margin-bottom: 20px;">people@themecenatehub.it</span>
-                    
-                    <span style="display: block; color: #ff8c42; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Instagram:</span>
-                    <span style="display: block; font-size: 1.2rem; margin-bottom: 5px;">@themecenatehub</span>
-                </div>
-                <div style="display: flex; gap: 15px; justify-content: center;">
-                    <button onclick="closeModal()" style="
-                        background: transparent;
-                        border: 2px solid #ff4757;
-                        color: #ff4757;
-                        padding: 12px 25px;
-                        border-radius: 20px;
-                        cursor: pointer;
-                        font-weight: 600;
-                    ">Back</button>
-                </div>
-            `;
-
-	modal.appendChild(form);
-	document.body.appendChild(modal);
-	document.body.style.overflow = "hidden";
-
-	setTimeout(() => (modal.style.opacity = "1"), 10);
-	window.currentModal = modal;
 }
 
 // crea l'effetto parallax (ovvero 3d) per le forme fluttuanti
@@ -224,12 +181,8 @@ const observer = new IntersectionObserver((entries) => {
 		if (entry.isIntersecting) {
 			entry.target.style.animationPlayState = "running";
 
-			// Trigger stats animation when stats section is visible
-			if (entry.target.classList.contains("stats-section")) {
-				animateStats();
-				// Unobserve after animation to prevent re-triggering
-				observer.unobserve(entry.target);
-			}
+			// Smette di osservare l'elemento una volta apparso per risparmiare memoria
+			observer.unobserve(entry.target);
 		}
 	});
 }, observerOptions);
@@ -237,9 +190,18 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all animated elements
 document.addEventListener("DOMContentLoaded", () => {
 	document
-		.querySelectorAll(".portfolio-item, .stats-section")
+		.querySelectorAll(".portfolio-item, .stats-section, .section-title")
 		.forEach((item) => {
-			observer.observe(item);
+			// Controlla se l'elemento è già visibile all'apertura della pagina
+			if (item.getBoundingClientRect().top < window.innerHeight) {
+				// Aspetta 2 secondi per lasciar finire completamente l'animazione dell'hero in alto
+				setTimeout(() => {
+					item.style.animationPlayState = "running";
+				}, 2000);
+			} else {
+				// Altrimenti, usa l'osservatore per aspettare lo scorrimento
+				observer.observe(item);
+			}
 		});
 });
 

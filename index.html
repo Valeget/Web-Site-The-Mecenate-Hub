@@ -26,22 +26,22 @@
 	<!-- Header -->
 	<header class="header">
 		<nav class="nav">
-			<a href="javascript:void(0)" onclick="scrollToSection('portfolio')">Portfolio</a> 
+            <a href="javascript:void(0)" onclick="scrollToSection('home')">Home</a>
+			<a href="javascript:void(0)" onclick="scrollToSection('portfolio')">Project</a> 
 			<a href="javascript:void(0)" onclick="scrollToSection('about')">About</a>
-			<a href="javascript:void(0)" onclick="ContactSection()">Contact</a>
+			<a href="javascript:void(0)" onclick="scrollToSection('contacts')">Contact</a>
 		</nav>
 	</header>
 
 	<!-- Hero content -->
 	<div class="hero-content">
 		<h1 class="hero-title">
-			<span class="title-main">WE ARE</span>
-			<span class="title-sub">THE MECENATE HUB</span>
+			<span class="title-main">THE MECENATE HUB</span>
 		</h1>
 		<p class="hero-tagline">Dove la creatività prende forma</p>
 		<p class="hero-description">
 			Un luogo per non permettere alle tue idee di rimanere dentro un cassetto.
-            Dove scrittori, artisti, attori, musicisti, fotografi...dove ogni creativo può trovare l'occasione
+            Dove scrittori, artisti, attori, musicisti, fotografi... dove ogni creativo può trovare l'occasione
             di realizzare i propri sogni
 		</p>
 		<div class="cta-buttons">
@@ -57,60 +57,58 @@
 			<div class="portfolio-item" onclick="openProject(1)">
 				<div class="portfolio-image project-1">
 					<div class="portfolio-overlay">
-						<div class="view-project">View Project</div>
+						<span class="view-project">View Project</span>
 					</div>
 				</div>
 				<div class="portfolio-content">
 					<h3 class="project-title">Il Viaggio</h3>
-					<p class="project-category">Branding & Identity</p>
+					<p class="project-category">Un'avventura ricca di emozioni ed ispirazioni</p>
 					<p class="project-description">
-						Complete visual identity system for a sustainable technology startup,
-						including logo design, brand guidelines, and digital assets.
+						5 creativi e un weekend in viaggio per vivere un'esperienza formativa, ispiratrice e indimenticabile.
 					</p>
 				</div>
 			</div>
+        </div>
 
-			<div class="portfolio-item" onclick="openProject(2)">
-				<div class="portfolio-image project-2">
-					<div class="portfolio-overlay">
-						<div class="view-project">View Project</div>
-					</div>
-				</div>
-				<div class="portfolio-content">
-					<h3 class="project-title">L'evento</h3>
-					<p class="project-category">UI/UX Design</p>
-					<p class="project-description">
-						Intuitive mobile banking application with focus on accessibility
-						and seamless user experience.
-					</p>
-				</div>
-			</div>
 	</section>
 
-	<!-- Stats section -->
-	<section class="stats-section">
-		<h2 style="font-size: 2rem; margin-bottom: 10px; color: #fff;">Quanti siamo</h2>
-		<p style="color: #aaa; margin-bottom: 20px;">I nostri numeri dall'inizio del nostro viaggio</p>
+	<!-- Sezione Chi siamo (Contenitore unico per centrare perfettamente la visuale) -->
+	<div id="about">
+		<!-- Titolo sezione Chi siamo (fuori dal riquadro opaco) -->
+		<h2 class="section-title" style="margin-top: 140px;">Chi siamo</h2>
 
-		<div class="stats-grid">
-			<div class="stat-item">
-				<span class="stat-number" data-target="150">0</span>
-				<span class="stat-label">Projects Completed</span>
-			</div>
-			<div class="stat-item">
-				<span class="stat-number" data-target="98">0</span>
-				<span class="stat-label">Client Satisfaction</span>
-			</div>
-			<div class="stat-item">
-				<span class="stat-number" data-target="5">0</span>
-				<span class="stat-label">Years Experience</span>
-			</div>
-			<div class="stat-item">
-				<span class="stat-number" data-target="25">0</span>
-				<span class="stat-label">Team Members</span>
-			</div>
+	<!-- Descrizione di noi -->
+	<section class="stats-section" style="margin-top: 0;">
+
+		<div style="max-width: 800px; margin: 0 auto;">
+			<h3 style="font-size: 1.8rem; color: #ff8c42; margin-bottom: 20px;">Noi e la nostra ambizione</h3>
+			<p style="color: #ccc; font-size: 1.1rem; line-height: 1.8;">The Mecenate Hub nasce da un gruppo di liceali del classico che hanno dovuto soffocare la loro inclinazione umanistica per le prospettive che un percorso di studi scientifico garantisce. Temprati ora dalle competenze in ambito informatico e gestionale, tornano nel mondo della cultura con l'intento di portare un messaggio chiaro per tutti quei creativi che, come fu per loro, 
+                si ritrovano a dover scegliere tra il lavoro e la propria arte: "<strong>non arrendetevi</strong>".</p>
+            <p style="color: #ccc; font-size: 1.1rem; line-height: 1.8;">
+                Questo semplice desiderio ha consolidato una community che spazia in ogni ambito dello scibile umano e che guarda verso il futuro con uno sguardo solido, fiducioso e fiero.</p>
 		</div>
 	</section>
+	</div>
+
+    <!-- Sezione Contatti -->
+	<div id="contacts">
+		<!-- Titolo sezione Contatti (fuori dal riquadro opaco) -->
+		<h2 class="section-title" style="margin-top: 140px;">Contatti</h2>
+
+	<!-- Descrizione di noi -->
+	<section class="stats-section" style="margin-top: 0;">
+
+		<div style="max-width: 800px; margin: 0 auto;">
+			<h3 style="font-size: 1.8rem; color: #ff8c42; margin-bottom: 20px;">Continua a seguirci</h3>
+			<p style="color: #ccc; font-size: 1.1rem; line-height: 1.8;">Qualora avessi qualche domanda per noi, non esitare a contattarci all'indirizzo email:</p>
+            <p style="color: #ffd166; font-size: 1.2rem; line-height: 1.8; font-weight: bold;">people@themecenatehub.it</p>
+            <p style="color: #ccc; font-size: 1.1rem; line-height: 1.8;">
+                Oppure seguici sui social per rimanere aggiornato sulle nostre attività:</p>
+                <p style="color: #ffd166; font-size: 1.2rem; line-height: 1.8; font-weight: bold;">@themecenatehub</p>
+		</div>
+	</section>
+	</div>
+
 </div>
 
 	<!-- Collegamento al file JavaScript -->
