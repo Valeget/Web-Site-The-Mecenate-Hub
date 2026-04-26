@@ -71,13 +71,9 @@ function openProject(projectId) {
 	const projects = {
 		1: "Aurora Brand Identity - A comprehensive rebranding project that transformed a startup's visual presence",
 		2: "FinTech Mobile App - Revolutionary banking app with award-winning user experience",
-		3: "E-Commerce Platform - Custom solution that increased client sales by 340%",
-		4: "Creative Campaign - Viral marketing campaign reaching 2M+ users",
-		5: "AR Experience - Cutting-edge augmented reality product visualization",
-		6: "SaaS Dashboard - Analytics platform trusted by Fortune 500 companies"
 	};
 
-	// Create modal effect
+	// Create modal effect !VOGLIO CHE SIA UNA FINESTRA PIù GRANDE IN CUI POSSO METTERE IMMAGINI E TESTI
 	const modal = document.createElement("div"); //crea l'effetto scuro dietro al contenuto del progetto
 	modal.style.cssText = `
                 position: fixed;
@@ -106,7 +102,7 @@ function openProject(projectId) {
                 border: 1px solid rgba(255, 255, 255, 0.2);
             `;
 
-	content.innerHTML = `
+	content.innerHTML = ` 
                 <h3 style="margin-bottom: 20px; font-size: 1.5rem;">${projects[projectId]}</h3>
                 <p style="margin-bottom: 30px; color: #aaa;">This would open the full project case study with detailed information, process, and results.</p>
                 <button onclick="closeModal()" style="
@@ -142,7 +138,7 @@ function closeModal() {  //come si chiudono i progetti
 	}
 }
 
-function startProject() {
+function ContactSection() {
 	// Create contact form modal
 	const modal = document.createElement("div"); //crea lo sfondo scuro del modulo
 	modal.style.cssText = `
@@ -204,12 +200,7 @@ function startProject() {
 	window.currentModal = modal;
 }
 
-function submitForm() {
-	alert("🚀 Message sent! We'll get back to you within 24 hours.");
-	closeModal();
-}
-
-// Parallax scrolling effect
+// crea l'effetto parallax (ovvero 3d) per le forme fluttuanti
 window.addEventListener("scroll", () => {
 	if (window.innerWidth > 768) {
 		const scrolled = window.pageYOffset;
@@ -224,8 +215,8 @@ window.addEventListener("scroll", () => {
 
 // Add intersection observer for animations
 const observerOptions = {
-	threshold: 0.3,
-	rootMargin: "0px 0px -50px 0px"
+	threshold: 0.15,
+	rootMargin: "0px 0px -100px 0px"
 };
 
 const observer = new IntersectionObserver((entries) => {
