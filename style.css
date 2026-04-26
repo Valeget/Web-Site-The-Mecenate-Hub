@@ -194,8 +194,8 @@ body {
 /* Hero content */
 .hero-content {
 	text-align: center;
-	margin-top: 15vh; /*posiziona il contenuto dell'hero a circa il 15% dell'altezza della finestra del browser, creando un po' di spazio sopra di esso per un aspetto più bilanciato e centrato verticalmente*/
-	margin-bottom: 60px;
+	margin-top: 28vh; /* Abbassato per centrarlo di più nello schermo */
+	margin-bottom: 100px; /* Lo spazio sotto il contenuto del hero */
 	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
@@ -279,7 +279,7 @@ body {
 
 /* Portfolio masonry grid */
 .portfolio-section { /*sezione del portfolio, sotto feature projects*/
-	margin-top: 80px;
+	margin-top: 150px; /* Spinge la sezione "Cosa facciamo" ancora più in basso */
 	position: relative;
 }
 
@@ -448,7 +448,6 @@ body {
 	max-width: 900px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 25vh;
 	opacity: 0;
 	animation: fadeInUp 1s ease-out 0s forwards;
 	animation-play-state: paused;
@@ -484,7 +483,7 @@ body {
 	}
 
 	.hero-content {
-		margin-top: 5vh;
+		margin-top: 15vh;
 		margin-bottom: 40px;
 	}
 

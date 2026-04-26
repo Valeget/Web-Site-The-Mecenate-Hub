@@ -26,7 +26,7 @@
 	<!-- Header -->
 	<header class="header">
 		<nav class="nav">
-            <a href="javascript:void(0)" onclick="scrollToSection('home')">Home</a>
+            <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Home</a>
 			<a href="javascript:void(0)" onclick="scrollToSection('portfolio')">Project</a> 
 			<a href="javascript:void(0)" onclick="scrollToSection('about')">About</a>
 			<a href="javascript:void(0)" onclick="scrollToSection('contacts')">Contact</a>
@@ -91,7 +91,7 @@
 	</div>
 
     <!-- Sezione Contatti -->
-	<div id="contacts">
+	<div id="contacts" style="margin-bottom: 25vh;">
 		<!-- Titolo sezione Contatti (fuori dal riquadro opaco) -->
 		<h2 class="section-title" style="margin-top: 140px;">Contatti</h2>
 
@@ -108,7 +108,6 @@
 		</div>
 	</section>
 	</div>
-
 </div>
 
 	<!-- Collegamento al file JavaScript -->
